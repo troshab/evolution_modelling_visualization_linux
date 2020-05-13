@@ -12,10 +12,6 @@ require_once('jpgraph/jpgraph_bar.php');
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-use PhpOffice\PhpSpreadsheet\Chart\Chart;
-use PhpOffice\PhpSpreadsheet\Chart\DataSeries;
-use PhpOffice\PhpSpreadsheet\Chart\DataSeriesValues;
-use PhpOffice\PhpSpreadsheet\Chart\PlotArea;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
@@ -42,10 +38,10 @@ class DrawChart extends Thread {
 }
 
 $ps = isset($argv[1]) && intval($argv[1]) == $argv[1] ? $argv[1] : 1;
-$gb_ram = isset($argv[2]) && intval($argv[2]) == $argv[2] ? $argv[2] : 1;
+$gb_ram = isset($argv[2]) && intval($argv[2]) == $argv[2] ? $argv[2] : 16;
 
-if($gb_ram < 8) 
-	die('RECOMENDED MINIMUM 8GB RAM, if you had\'t enought try to add cache https://phpspreadsheet.readthedocs.io/en/latest/topics/memory_saving/');
+if($gb_ram < 16) 
+	echo 'RECOMENDED MINIMUM 16GB RAM, if you had\'t enought try to add cache https://phpspreadsheet.readthedocs.io/en/latest/topics/memory_saving/' . PHP_EOL;
 
 ini_set('memory_limit', $gb_ram  . 'G');
 echo 'RUNNED ON ' . $ps . ' PROCESSORS WITH ' . $gb_ram . 'GB RAM LIMIT' . PHP_EOL;
